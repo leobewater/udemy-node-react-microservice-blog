@@ -8,15 +8,7 @@ app.use(cors());
 
 const posts = {};
 
-// get posts and comments together
-app.get('/posts', (req, res) => {
-  res.send(posts);
-});
-
-// receive event from event bus
-app.post('/events', (req, res) => {
-  const { type, data } = req.body;
-
+const handleEvent = (type, data) => {
   // add new post to the posts object
   if (type === 'PostCreated') {
     const { id, title } = data;
@@ -41,8 +33,20 @@ app.post('/events', (req, res) => {
     comment.status = status;
     comment.content = content;
   }
+};
 
-  console.log(posts);
+// get posts and comments together
+app.get('/posts', (req, res) => {
+  res.send(posts);
+});
+
+// receive event from event bus
+app.post('/events', (req, res) => {
+  const { type, data } = req.body;
+
+  handleEvent(type, data);
+
+  // console.log(posts);
 
   res.send({});
 });
