@@ -3,6 +3,7 @@ import React from 'react';
 // import axios from 'axios';
 
 const CommentList = ({ comments }) => {
+  // fetching data from comments API for each Post
   // const CommentList = ({ postId }) => {
   // const [comments, setComments] = useState([]);
 
