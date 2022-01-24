@@ -5,8 +5,15 @@ const axios = require('axios');
 const app = express();
 app.use(bodyParser.json());
 
+// store all incoming events
+const events = [];
+
+
 app.post('/events', (req, res) => {
   const event = req.body;
+  
+  // save event
+  events.push(event);
 
   // post
   axios.post('http://localhost:4000/events', event).catch((err) => {
@@ -30,6 +37,13 @@ app.post('/events', (req, res) => {
 
   res.send({ status: 'OK' });
 });
+
+
+// get all stored incoming events
+app.get('/events', (req, res) => {
+  res.send(events);
+})
+
 
 app.listen(4005, () => {
   console.log('Listening on 4005');
