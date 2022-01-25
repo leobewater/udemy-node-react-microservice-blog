@@ -57,7 +57,9 @@ app.listen(4002, async () => {
 
   try {
     // get all the pending/dropped events
-    const res = await axios.get('http://localhost:4005/events');
+    // const res = await axios.get('http://localhost:4005/events');
+    // using kubernetes cluster IP service name and port
+    const res = await axios.get('http://event-bus-srv:4005/events');
 
     // re-run the pending events
     for (let event of res.data) {
