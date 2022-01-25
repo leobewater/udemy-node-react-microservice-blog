@@ -8,7 +8,7 @@ metadata:
 spec:
   #set rules to redirect to the correct Pod
   rules:
-    - host: posts.com
+    - host: blog-kube.local
       http:
         paths:
           - path: /posts/create

@@ -9,7 +9,7 @@ const PostCreate = () => {
 
       // create post by passing title as body
       // http://localhost:4000/posts/create
-      await axios.post('http://posts.com/posts/create', {
+      await axios.post('http://blog-kube.local/posts/create', {
         title,
       });
 

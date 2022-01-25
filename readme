@@ -38,14 +38,21 @@ https://kubernetes.github.io/ingress-nginx/deploy
 
 > kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.1/deploy/static/provider/cloud/deploy.yaml
  
-For now using posts.com as the local domain name. Need to add 127.0.0.1 posts.com in /etc/hosts
+For now using blog-kube.local as the local domain name. Need to add 127.0.0.1 blog-kube.local in /etc/hosts
 
 Then add the infra/k8s/ingress-srv.yaml file
 
-Replace client react app axios localhost:port url to posts.com which was set in the ingress-srv.yaml file
+Replace client react app axios localhost:port url to blog-kube.local which was set in the ingress-srv.yaml file
 
 Create a client-depl.yaml file, build docker image and push to docker hub
 
 Then add the rest of the rules in ingress-srv.yaml file and build docker image and push to docker hub and restart required deployment services.
 
-Now you should be able to access the app at http://posts.com via your browser
+Now you should be able to access the app at http://blog-kube.local via your browser
+
+set up skaffold.yaml file on the project root directory
+
+then start skaffold and it will rebuild all docker images, deployments and services
+> skaffold dev
+
+You may need to run it multiple times
