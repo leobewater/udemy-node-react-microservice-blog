@@ -44,4 +44,8 @@ Then add the infra/k8s/ingress-srv.yaml file
 
 Replace client react app axios localhost:port url to posts.com which was set in the ingress-srv.yaml file
 
-Create a client-depl.yaml file
+Create a client-depl.yaml file, build docker image and push to docker hub
+
+Then add the rest of the rules in ingress-srv.yaml file and build docker image and push to docker hub and restart required deployment services.
+
+Now you should be able to access the app at http://posts.com via your browser
