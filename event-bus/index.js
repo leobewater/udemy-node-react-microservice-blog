@@ -18,7 +18,9 @@ app.post('/events', (req, res) => {
   // dispatch events to all microservices
   
   // post
-  axios.post('http://localhost:4000/events', event).catch((err) => {
+  //axios.post('http://localhost:4000/events', event).catch((err) => {
+  // using kubernetes cluster IP service name and port
+  axios.post('http://posts-clusterip-srv:4000/events', event).catch((err) => {
     console.log(err.message);
   });
 

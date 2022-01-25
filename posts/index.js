@@ -24,8 +24,10 @@ app.post('/posts', async (req, res) => {
   };
 
   // emit post created event
-  await axios.post('http://localhost:4005/events', {
-    type: 'PostCreated',
+//  await axios.post('http://localhost:4005/events', {
+  // using kubernetes cluster IP service name and port
+  await axios.post('http://event-bus-srv:4005/events', {
+      type: 'PostCreated',
     data: {
       id,
       title,
