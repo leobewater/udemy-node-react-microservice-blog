@@ -57,4 +57,8 @@ Terminal - build image with tag name
 > docker ps
 // get log from container ID
 > docker logs a04b40b7db2e
+
+// with Kubernate enabled
+build image with version
+> docker build -t mmbee888/posts:0.0.1 .
 */
