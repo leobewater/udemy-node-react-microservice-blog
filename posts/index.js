@@ -43,15 +43,16 @@ app.post('/events', (req, res) => {
 });
 
 app.listen(4000, () => {
+  console.log('v55');
   console.log('Listening on 4000');
 });
 
 /*
 Terminal - build image with tag name
-> docker build -t mmbee888/posts . 
-> docker run mmbee888/posts
+> docker build -t lcheung/posts . 
+> docker run lcheung/posts
 // to ssh to the instance
-> docker run -it mmbee888/posts sh
+> docker run -it lcheung/posts sh
 // Or using container ID
 > docker exec -it a04b40b7db2e sh 
 > docker ps
@@ -60,5 +61,5 @@ Terminal - build image with tag name
 
 // with Kubernate enabled
 build image with version
-> docker build -t mmbee888/posts:0.0.1 .
+> docker build -t lcheung/posts:0.0.1 .
 */
