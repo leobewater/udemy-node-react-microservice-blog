@@ -1,0 +1,62 @@
+apiVersion: skaffold/v2alpha3
+kind: Config
+deploy:
+  # deploy and watch all files inside the folder specified
+  # apply these files and delete the Pods and services when they're not running
+  kubectl:
+    manifests:
+      - ./infra/k8s/*
+build:
+  # try to push it up to docker hub to false
+  local:
+    push: false
+  # when something changes inside the client/src/*.js folder and update the Pod
+  artifacts:
+    - image: lcheung/client
+      context: client
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.js'
+            dest: .
+    - image: lcheung/comments
+      context: comments
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: '*.js'
+            dest: .
+    - image: lcheung/event-bus
+      context: event-bus
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: '*.js'
+            dest: .
+    - image: lcheung/moderation
+      context: moderation
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: '*.js'
+            dest: .
+    - image: lcheung/posts
+      context: posts
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: '*.js'
+            dest: .
+    - image: lcheung/query
+      context: query
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: '*.js'
+            dest: .
