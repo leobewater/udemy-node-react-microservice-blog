@@ -38,6 +38,10 @@ https://kubernetes.github.io/ingress-nginx/deploy
 
 > kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.1/deploy/static/provider/cloud/deploy.yaml
  
+For now using posts.com as the local domain name. Need to add 127.0.0.1 posts.com in /etc/hosts
+
 Then add the infra/k8s/ingress-srv.yaml file
 
+Replace client react app axios localhost:port url to posts.com which was set in the ingress-srv.yaml file
 
+Create a client-depl.yaml file

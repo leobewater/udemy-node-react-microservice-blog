@@ -8,8 +8,8 @@ const PostCreate = () => {
       event.preventDefault();
 
       // create post by passing title as body
-      // http://localhost:4000/posts
-      await axios.post('http://posts.com/posts', {
+      // http://localhost:4000/posts/create
+      await axios.post('http://posts.com/posts/create', {
         title,
       });
 
