@@ -1,0 +1,43 @@
+View instructions
+https://docs.google.com/document/d/1PYWc9jcrdeD4Kev-6RwWYj7ci5s98tohdMbmg5mrXdM
+
+This project is microservices with Docker and Kubernetes.
+Each microservices has its own Dockerfile which will be needed to build docker images
+
+Build docker images for any changes made.
+> docker build -t lcheung/posts . 
+> docker build -t lcheung/comments . 
+> docker build -t lcheung/event-bus . 
+> docker build -t lcheung/moderation . 
+> docker build -t lcheung/query . 
+
+Then push images to docker hub for any changes made.
+> docker push lcheung/posts
+> docker push lcheung/comments
+> docker push lcheung/event-bus
+> docker push lcheung/moderation
+> docker push lcheung/query
+
+Then create kubernetes yaml file for creating a pod and deployment plus Cluster IP service in folder /infra/k8s/.
+Cluster IP service allows Pods to communicate with each other.
+posts-depl.yaml
+comments-depl.yaml
+event-bus-depl.yaml
+moderation-depl.yaml
+query-depl.yaml
+
+NodePort service - for local development and allow localhost access from browser with a port starts with localhost:3XXXX.
+posts-srv.yaml
+
+Then you can use postman to access the posts service
+GET http://localhost:3XXXX/posts/
+POST http://localhost:3XXXX/posts/ with json body
+
+Install Load Balancer - ingress-nginx
+https://kubernetes.github.io/ingress-nginx/deploy
+
+> kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.1/deploy/static/provider/cloud/deploy.yaml
+ 
+Then add the infra/k8s/ingress-srv.yaml file
+
+

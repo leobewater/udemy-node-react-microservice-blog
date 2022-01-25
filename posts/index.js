@@ -49,19 +49,3 @@ app.listen(4000, () => {
   console.log('Listening on 4000');
 });
 
-/*
-Terminal - build image with tag name
-> docker build -t lcheung/posts . 
-> docker run lcheung/posts
-// to ssh to the instance
-> docker run -it lcheung/posts sh
-// Or using container ID
-> docker exec -it a04b40b7db2e sh 
-> docker ps
-// get log from container ID
-> docker logs a04b40b7db2e
-
-// with Kubernate enabled
-build image with version
-> docker build -t lcheung/posts:0.0.1 .
-*/
