@@ -15,6 +15,8 @@ app.post('/events', (req, res) => {
   // save event
   events.push(event);
 
+  // dispatch events to all microservices
+  
   // post
   axios.post('http://localhost:4000/events', event).catch((err) => {
     console.log(err.message);
